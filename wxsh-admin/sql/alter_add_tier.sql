@@ -1,0 +1,4 @@
+USE wxsh;
+
+ALTER TABLE pet_mutate
+  ADD COLUMN tier VARCHAR(5) NOT NULL DEFAULT 'T1' COMMENT '档位 T1/T2/T3' AFTER pet_year;
