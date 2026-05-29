@@ -54,7 +54,7 @@ export function validatePetBody(body, partial = false) {
 
 export function parseId(id) {
   const n = Number(id)
-  if (!Number.isInteger(n) || n < 1) return null
+  if (!Number.isInteger(n) || n < 0) return null
   return n
 }
 

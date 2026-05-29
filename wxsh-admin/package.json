@@ -1,23 +1,19 @@
 {
   "name": "wxsh-admin",
+  "private": true,
   "version": "1.0.0",
-  "description": "妄想山海宠物变异攻略 — 后端 API 与管理后台",
-  "main": "src/server.js",
+  "description": "妄想山海宠物变异攻略 — 数据管理后台",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch src/server.js",
-    "admin:install": "cd admin && npm install",
-    "admin:dev": "cd admin && npm run dev",
-    "admin:build": "cd admin && npm run build",
-    "build": "npm run admin:build",
-    "import:archive": "node scripts/import-archive.mjs --replace",
-    "seed:test": "node scripts/seed-test.mjs"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mysql2": "^3.12.0"
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7"
   }
 }

@@ -1,13 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import routes from './routes/index.js'
 import { notFound } from './middleware/notFound.js'
 import { errorHandler } from './middleware/errorHandler.js'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const publicDir = path.resolve(__dirname, '../../public')
 
 const app = express()
 
@@ -23,11 +18,6 @@ app.use(
 app.use(express.json({ limit: '1mb' }))
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/admin', express.static(path.join(publicDir, 'admin')))
-app.get('/admin/*', (req, res) => {
-  res.sendFile(path.join(publicDir, 'admin', 'index.html'))
-})
-
 app.get('/', (req, res) => {
   res.json({
     code: 0,
@@ -35,7 +25,6 @@ app.get('/', (req, res) => {
     data: {
       docs: '/api/health',
       pets: '/api/pets',
-      admin: '/admin',
     },
   })
 })

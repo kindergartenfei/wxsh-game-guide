@@ -177,7 +177,7 @@ onMounted(() => {
       <nav>
         <a class="nav-item active" href="#">pet_mutate</a>
       </nav>
-      <a class="site-link" href="http://localhost:5173" target="_blank" rel="noreferrer">
+      <a class="site-link" href="/" target="_blank" rel="noreferrer">
         打开攻略前台 →
       </a>
     </aside>

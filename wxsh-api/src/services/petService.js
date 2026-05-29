@@ -79,7 +79,6 @@ export async function listPets(queryParams) {
   )
   const total = countRows[0].total
 
-  // LIMIT/OFFSET 使用已校验的整数拼接，避免 mysql2 预处理参数类型问题
   const rows = await query(
     `SELECT ${FIELDS} FROM ${TABLE} ${where} ORDER BY ${sortBy} ${sortOrder}, id DESC LIMIT ${pageSize} OFFSET ${offset}`,
     params,
@@ -155,7 +154,6 @@ export async function batchDelete(ids) {
   return result.affectedRows
 }
 
-/** 按部位+年份聚合攻击档位 */
 export async function getAttackGroups() {
   const rows = await query(
     `SELECT mutate_part, pet_year, tier, attack_value, penetrate_value,
@@ -172,7 +170,6 @@ export async function getAttackGroups() {
   }))
 }
 
-/** 前端属性检索卡片列表 */
 export async function getArchiveCards() {
   const rows = await query(
     `SELECT mutate_part, pet_year, tier, attack_value, penetrate_value,
@@ -197,7 +194,6 @@ export async function getArchiveCards() {
   }))
 }
 
-/** 元数据：部位列表、年份映射 */
 export async function getMeta() {
   const partRows = await query(
     `SELECT DISTINCT mutate_part FROM ${TABLE} ORDER BY mutate_part`,

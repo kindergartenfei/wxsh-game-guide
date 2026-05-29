@@ -2,16 +2,10 @@
 -- 妄想山海宠物变异攻略 — 数据库完整安装脚本
 -- 适用于宝塔面板一键导入
 -- 数据库名：wxsh
--- 用户名：wxsh_admin / 密码：wxsh2024@Demo
 -- ============================================
 
 -- 创建数据库
 CREATE DATABASE IF NOT EXISTS wxsh DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- 创建用户（宝塔面板如已单独创建用户可跳过此行）
--- CREATE USER IF NOT EXISTS 'wxsh_admin'@'localhost' IDENTIFIED BY 'wxsh2024@Demo';
--- GRANT ALL PRIVILEGES ON wxsh.* TO 'wxsh_admin'@'localhost';
--- FLUSH PRIVILEGES;
 
 USE wxsh;
 
