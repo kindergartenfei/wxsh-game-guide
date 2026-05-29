@@ -363,8 +363,77 @@ th {
   margin-top: 0.5rem;
 }
 
+/* Login Page */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 1rem;
+  margin:0 auto;
+}
+
+.login-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.login-card .logo {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.login-card .logo-sub {
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.login-input:focus {
+  border-color: var(--primary);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 0.65rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
 @media (max-width: 768px) {
   .admin {
+    flex-direction: column;
+  }
+
+  .dashboard {
     flex-direction: column;
   }
 

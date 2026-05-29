@@ -11,6 +11,27 @@ import {
   fetchStats,
 } from './api/pet.js'
 
+const ADMIN_PASSWORD = '123456'
+const isLoggedIn = ref(false)
+const loginForm = reactive({ username: '', password: '' })
+const loginError = ref('')
+
+function handleLogin() {
+  if (loginForm.password === ADMIN_PASSWORD) {
+    isLoggedIn.value = true
+    loginError.value = ''
+  } else {
+    loginError.value = '密码错误，请重试'
+  }
+}
+
+function handleLogout() {
+  isLoggedIn.value = false
+  loginForm.username = ''
+  loginForm.password = ''
+  loginError.value = ''
+}
+
 const list = ref([])
 const total = ref(0)
 const loading = ref(false)
@@ -171,25 +192,52 @@ onMounted(() => {
 
 <template>
   <div class="admin">
-    <aside class="sidebar">
-      <div class="logo">WXSH Admin</div>
-      <p class="logo-sub">宠物变异数据管理</p>
-      <nav>
-        <a class="nav-item active" href="#">pet_mutate</a>
-      </nav>
-      <a class="site-link" href="/" target="_blank" rel="noreferrer">
-        打开攻略前台 →
-      </a>
-    </aside>
+    <!-- 登录页面 -->
+    <div v-if="!isLoggedIn" class="login-container">
+      <div class="login-card">
+        <div class="logo">WXSH Admin</div>
+        <p class="logo-sub">宠物变异数据管理</p>
+        <form class="login-form" @submit.prevent="handleLogin">
+          <input
+            v-model="loginForm.username"
+            type="text"
+            placeholder="用户名（任意）"
+            class="login-input"
+          />
+          <input
+            v-model="loginForm.password"
+            type="password"
+            placeholder="密码"
+            class="login-input"
+          />
+          <p v-if="loginError" class="alert error">{{ loginError }}</p>
+          <button type="submit" class="btn primary login-btn">登录</button>
+        </form>
+      </div>
+    </div>
 
-    <main class="main">
-      <header class="page-header">
-        <div>
-          <h1>数据管理</h1>
-          <p>对 pet_mutate 表进行增删改查</p>
-        </div>
-        <button type="button" class="btn primary" @click="openCreate">+ 新增</button>
-      </header>
+    <!-- 管理后台 -->
+    <div v-else class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">WXSH Admin</div>
+        <p class="logo-sub">宠物变异数据管理</p>
+        <nav>
+          <a class="nav-item active" href="#">pet_mutate</a>
+        </nav>
+        <a class="site-link" href="/" target="_blank" rel="noreferrer">
+          打开攻略前台 →
+        </a>
+        <button type="button" class="btn ghost" @click="handleLogout" style="margin-top: 12px;">退出登录</button>
+      </aside>
+
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>数据管理</h1>
+            <p>对 pet_mutate 表进行增删改查</p>
+          </div>
+          <button type="button" class="btn primary" @click="openCreate">+ 新增</button>
+        </header>
 
       <section v-if="stats" class="stats">
         <div class="stat-card">
@@ -327,5 +375,6 @@ onMounted(() => {
       @close="closeModal"
       @submit="handleSubmit"
     />
+    </div>
   </div>
 </template>
