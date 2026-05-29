@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE || '/api'
+const BASE = import.meta.env.VITE_API_BASE || 'http://8.130.179.156:3000/api'
 
 async function request(url, options = {}) {
   const res = await fetch(`${BASE}${url}`, {

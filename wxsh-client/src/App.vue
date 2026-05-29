@@ -74,7 +74,7 @@ watch(
 
     <footer class="site-footer">
       <p>工具在线运行中 · 支持中文 / 拼音 / 首字母检索</p>
-      <p class="footer-sub">妄想山海变异查询工具 · API: localhost:3000</p>
+      <p class="footer-sub">妄想山海变异查询工具 · API: 8.130.179.156:3000</p>
     </footer>
   </div>
 </template>
